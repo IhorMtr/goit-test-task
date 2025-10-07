@@ -47,3 +47,13 @@ ol {
   margin: 0;
   padding: 0;
 }
+
+section {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
