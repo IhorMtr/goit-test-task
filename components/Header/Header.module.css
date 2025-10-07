@@ -1,0 +1,25 @@
+.container {
+  max-width: 1440px;
+  display: flex;
+  padding: 24px 64px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav {
+  margin-left: 450px;
+}
+
+.navList {
+  display: flex;
+  font-weight: 500;
+  gap: 32px;
+}
+
+.navListLink {
+  transition: 0.3s;
+}
+
+.navListLink:hover {
+  color: var(--button-hover);
+}

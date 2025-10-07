@@ -27,10 +27,11 @@ button {
 
 body {
   background: var(--white);
+  color: var(--main);
+  line-height: 150%;
 }
 
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
@@ -38,4 +39,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
