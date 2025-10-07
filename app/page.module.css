@@ -1,0 +1,45 @@
+.homeContainer {
+  background: url('/home-image.jpg') center / cover no-repeat;
+  height: 696px;
+  padding-left: 64px;
+  padding-right: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.homeSection {
+  padding: 0;
+}
+
+.title,
+.text {
+  font-weight: 600;
+  color: var(--inputs);
+}
+
+.title {
+  font-size: 48px;
+  line-height: 67%;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 24px;
+  line-height: 133%;
+  margin-bottom: 40px;
+}
+
+.link {
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 173px;
+  height: 56px;
+  background: var(--button);
+  letter-spacing: -0.01em;
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.link:hover {
+  background: var(--button-hover);
+}

@@ -5,6 +5,7 @@ import Header from '@/components/Header/Header';
 const inter = Inter({
   variable: '--font-family',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
 export default function RootLayout({

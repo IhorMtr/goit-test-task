@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 export default function Header() {
   return (
-    <header>
+    <header className={css.header}>
       <div className={`container ${css.headerContainer}`}>
         <Image
           src={'/logo.png'}
