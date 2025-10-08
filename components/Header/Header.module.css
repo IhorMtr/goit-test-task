@@ -4,6 +4,7 @@
   align-items: center;
   border-bottom: 1px solid var(--badges);
   background: var(--inputs);
+  margin-bottom: 48px;
 }
 
 .nav {
@@ -14,10 +15,6 @@
   display: flex;
   font-weight: 500;
   gap: 32px;
-}
-
-.navListLink {
-  transition: 0.3s;
 }
 
 .navListLink:hover {
