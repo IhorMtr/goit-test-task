@@ -1,0 +1,11 @@
+.loadMoreBtn {
+  border: 1px solid var(--gray-light);
+  border-radius: 200px;
+  width: 145px;
+  height: 56px;
+  align-self: center;
+  margin-bottom: 52px;
+  background: none;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
