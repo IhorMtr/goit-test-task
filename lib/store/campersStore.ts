@@ -7,7 +7,7 @@ import { Camper } from '../types/camper';
 interface CampersStore {
   filters: {
     location: string;
-    vehicleEquipment: VehicleEquipment;
+    vehicleEquipment: Partial<VehicleEquipment>;
     vehicleType: VehicleType;
   };
   favourites: string[];

@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header/Header';
+import ReactToaster from '@/components/ReactToaster/ReactToaster';
 
 const inter = Inter({
   variable: '--font-family',
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`}>
       <body>
+        <ReactToaster />
         <Header />
         <main>{children}</main>
       </body>

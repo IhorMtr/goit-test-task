@@ -4,7 +4,6 @@
   align-items: center;
   border-bottom: 1px solid var(--badges);
   background: var(--inputs);
-  margin-bottom: 48px;
 }
 
 .nav {
