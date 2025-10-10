@@ -8,10 +8,17 @@ export async function getCampers(page = 1, limit = 4): Promise<Response> {
 }
 
 export async function getFilteredCampers(
-  filter: Record<string, any>
+  filter: Record<string, any>,
+  page = 1,
+  limit = 4
 ): Promise<Response> {
   const parsedFilter = parseFilter(filter);
-  const searchParams = new URLSearchParams(parsedFilter).toString();
+
+  const searchParams = new URLSearchParams({
+    ...parsedFilter,
+    page: String(page),
+    limit: String(limit),
+  }).toString();
 
   const res = await api.get<Response>(`/campers?${searchParams}`);
   return res.data;

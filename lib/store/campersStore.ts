@@ -12,6 +12,8 @@ interface CampersStore {
   };
   favourites: string[];
   campers: Camper[];
+  isGlobalLoading: boolean;
+  setGlobalLoading: (value: boolean) => void;
 
   setFilters: (filters: CampersStore['filters']) => void;
   resetFilters: () => void;
@@ -33,6 +35,7 @@ type CampersData = Omit<
   | 'toggleFavourite'
   | 'setCampers'
   | 'setLocation'
+  | 'setGlobalLoading'
 >;
 
 const initialStore: CampersData = {
@@ -49,6 +52,7 @@ const initialStore: CampersData = {
   },
   favourites: [],
   campers: [],
+  isGlobalLoading: false,
 };
 
 export const useCampersStore = create<CampersStore>()(
@@ -81,6 +85,8 @@ export const useCampersStore = create<CampersStore>()(
         })),
 
       setCampers: campers => set({ campers }),
+
+      setGlobalLoading: value => set({ isGlobalLoading: value }),
 
       toggleFavourite: id => {
         const { favourites } = get();

@@ -1,27 +1,43 @@
 import FiltersForm from '@/components/FiltersForm/FiltersForm';
 import css from './catalog.module.css';
-import CamperCard from '@/components/CamperCard/CamperCard';
-import { getCampers } from '@/lib/api/serverApi';
+import { getCampers, getFilteredCampers } from '@/lib/api/serverApi';
 import LoadMoreButton from '@/components/LoadMoreButton/LoadMoreButton';
 
 export default async function Catalog() {
   const { items, total } = await getCampers(1, 4);
 
-  async function fetchCampers(page: number) {
+  async function fetchCampers(
+    page: number,
+    filters?: {
+      location?: string;
+      equipment?: string[];
+      vehicleType?: string | null;
+    }
+  ) {
     'use server';
-    const res = await getCampers(page, 4);
-    return res;
+    if (
+      filters &&
+      (filters.location ||
+        (filters.equipment && filters.equipment.length) ||
+        filters.vehicleType)
+    ) {
+      return getFilteredCampers(
+        {
+          location: filters.location || '',
+          equipment: filters.equipment || [],
+          vehicleType: filters.vehicleType || null,
+        },
+        page,
+        4
+      );
+    }
+    return getCampers(page, 4);
   }
 
   return (
     <div className={`container ${css.homeContainer}`}>
       <FiltersForm />
-
       <div className={css.cardsWrapper}>
-        {items.map(camper => (
-          <CamperCard key={camper.id} camper={camper} />
-        ))}
-
         <LoadMoreButton
           initialItems={items}
           total={total}

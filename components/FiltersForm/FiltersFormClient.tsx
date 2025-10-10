@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useEffect, useState } from 'react';
 import { useCampersStore } from '@/lib/store/campersStore';
 import css from './FiltersForm.module.css';
 import { VehicleType } from '@/lib/types/vehicleType';
@@ -16,25 +16,69 @@ export default function FiltersFormClient({
   equipmentFilters,
   typeFilters,
 }: Props) {
-  const { setFilters } = useCampersStore.getState();
+  const [formState, setFormState] = useState({
+    location: '',
+    vehicleEquipment: {} as Record<string, boolean>,
+    vehicleType: '',
+  });
+
+  const setGlobalLoading = useCampersStore(state => state.setGlobalLoading);
+  const filters = useCampersStore(state => state.filters);
+  const setFilters = useCampersStore(state => state.setFilters);
+  const setCampers = useCampersStore(state => state.setCampers);
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(formData: FormData) {
+  useEffect(() => {
+    setFormState({
+      location: filters.location || '',
+      vehicleEquipment: filters.vehicleEquipment || {},
+      vehicleType: filters.vehicleType || '',
+    });
+  }, [filters.location, filters.vehicleEquipment, filters.vehicleType]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     setLoading(true);
+    setGlobalLoading(true);
+
     try {
+      const formData = new FormData(e.currentTarget);
       const result = await action(formData);
       setFilters({
         location: result.location,
         vehicleEquipment: result.vehicleEquipment,
         vehicleType: result.vehicleType as VehicleType,
       });
+      setCampers(
+        Array.isArray(result.campers?.items) ? result.campers.items : []
+      );
     } finally {
       setLoading(false);
+      setGlobalLoading(false);
     }
   }
 
+  function handleLocationChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setFormState(prev => ({ ...prev, location: value }));
+    setFilters({ ...filters, location: value });
+  }
+
+  function handleEquipmentChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value, checked } = e.target;
+    const updatedEquip = { ...formState.vehicleEquipment, [value]: checked };
+    setFormState(prev => ({ ...prev, vehicleEquipment: updatedEquip }));
+    setFilters({ ...filters, vehicleEquipment: updatedEquip });
+  }
+
+  function handleTypeChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setFormState(prev => ({ ...prev, vehicleType: value }));
+    setFilters({ ...filters, vehicleType: value as VehicleType });
+  }
+
   return (
-    <form action={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <fieldset className={css.locationFieldset}>
         <legend className={css.locationLegend}>Location</legend>
         <label className={css.locationLabel}>
@@ -46,6 +90,8 @@ export default function FiltersFormClient({
             name="location"
             placeholder="City"
             className={css.locationInput}
+            value={formState.location}
+            onChange={handleLocationChange}
           />
         </label>
       </fieldset>
@@ -63,6 +109,8 @@ export default function FiltersFormClient({
                   name="vehicle-equipment"
                   value={item.value}
                   className={css.realCheckbox}
+                  checked={!!formState.vehicleEquipment[item.value]}
+                  onChange={handleEquipmentChange}
                 />
                 <svg className={css.icon}>
                   <use href={`/icons.svg#icon-${item.icon}`} />
@@ -85,6 +133,8 @@ export default function FiltersFormClient({
                   name="vehicle-type"
                   value={type.value}
                   className={css.realCheckbox}
+                  checked={formState.vehicleType === type.value}
+                  onChange={handleTypeChange}
                 />
                 <svg className={css.icon}>
                   <use href={`/icons.svg#icon-${type.icon}`} />

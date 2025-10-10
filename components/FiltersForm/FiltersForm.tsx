@@ -19,7 +19,6 @@ export default function FiltersForm() {
         equipment,
         vehicleType,
       });
-
       return { location, vehicleEquipment, vehicleType, campers, error: null };
     } catch {
       return {
@@ -41,7 +40,7 @@ export default function FiltersForm() {
   ];
 
   const typeFilters = [
-    { name: 'Van', icon: 'bi-grid-1x2', value: 'van' },
+    { name: 'Panel Truck', icon: 'bi-grid-1x2', value: 'panelTruck' },
     { name: 'Fully Integrated', icon: 'bi-grid', value: 'fullyIntegrated' },
     { name: 'Alcove', icon: 'bi-grid-3x3-gap', value: 'alcove' },
   ];
