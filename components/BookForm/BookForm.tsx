@@ -1,15 +1,20 @@
-import { useState } from 'react';
+'use client';
+import { useEffect, useState } from 'react';
 import css from './BookForm.module.css';
-import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
+import Calendar from '../Calendar/Calendar';
 
 interface BookFormProps {
   handleSubmit: () => void;
+  resetKey?: number;
 }
 
-export default function BookForm({ handleSubmit }: BookFormProps) {
+export default function BookForm({ handleSubmit, resetKey }: BookFormProps) {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-  const [calendarOpen, setCalendarOpen] = useState(false);
+
+  useEffect(() => {
+    setSelectedDate(undefined);
+  }, [resetKey]);
+
   return (
     <div className={css.formWrapper}>
       <div className={css.formTextWrapper}>
@@ -40,30 +45,7 @@ export default function BookForm({ handleSubmit }: BookFormProps) {
           />
         </label>
 
-        <div className={css.datePickerWrapper}>
-          <input
-            type="text"
-            name="bookingDate"
-            placeholder="Booking date*"
-            className={css.input}
-            value={selectedDate ? format(selectedDate, 'dd/MM/yyyy') : ''}
-            readOnly
-            required
-            onClick={() => setCalendarOpen(!calendarOpen)}
-          />
-          {calendarOpen && (
-            <div className={css.calendarPopup}>
-              <DayPicker
-                mode="single"
-                selected={selectedDate}
-                onSelect={day => {
-                  setSelectedDate(day);
-                  setCalendarOpen(false);
-                }}
-              />
-            </div>
-          )}
-        </div>
+        <Calendar onSelect={setSelectedDate} selectedDate={selectedDate} />
 
         <label className={css.label}>
           <textarea

@@ -1,0 +1,135 @@
+.input {
+  border-radius: 12px;
+  padding: 18px;
+  width: 527px;
+  height: 60px;
+  background: var(--inputs);
+}
+
+.dayPicker {
+  border: 1px solid var(--text);
+  border-radius: 12px;
+  position: absolute;
+  background: var(--white);
+  font-weight: 400;
+  line-height: 120%;
+  text-align: center;
+  color: var(--main);
+  position: absolute;
+  left: 25%;
+  bottom: -20px;
+}
+
+.dayPicker::before {
+  content: '';
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 13px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg width='22' height='19' viewBox='0 0 22 19' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.26795 1C10.0377 -0.333333 11.9623 -0.333333 12.7321 1L21.3923 16C22.1621 17.3333 21.1999 19 19.6603 19H2.33975C0.800145 19 -0.162105 17.3333 0.607696 16L9.26795 1Z' fill='%23fff' stroke='%23475467' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M1 18H21' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.today {
+  background: var(--text);
+  border-radius: 32px;
+}
+
+.today .day_button {
+  color: var(--inputs);
+}
+
+.outside .day_button {
+  color: var(--text);
+}
+
+.day_button {
+  width: 36px;
+  height: 32px;
+  font-size: 14px;
+  background: none;
+  color: var(--main);
+}
+
+.weekdays {
+  position: relative;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.month_grid thead::after {
+  content: '';
+  display: block;
+  height: 20px;
+  width: 100%;
+}
+
+.weekdays::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 102%;
+  background-color: var(--text);
+  left: -2px;
+  top: 24px;
+}
+
+.button_previous,
+.button_next {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+}
+
+.button_previous svg,
+.button_next svg {
+  display: none;
+}
+
+.button_previous {
+  top: 12px;
+  left: 5px;
+  background-image: url("data:image/svg+xml,%3Csvg width='9' height='16' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.70711 0.292893C9.09763 0.683417 9.09763 1.31658 8.70711 1.70711L2.41421 8L8.70711 14.2929C9.09763 14.6834 9.09763 15.3166 8.70711 15.7071C8.31658 16.0976 7.68342 16.0976 7.29289 15.7071L0.292894 8.70711C-0.0976311 8.31658 -0.0976311 7.68342 0.292894 7.29289L7.29289 0.292893C7.68342 -0.097631 8.31658 -0.0976311 8.70711 0.292893Z' fill='%23475467'/%3E%3C/svg%3E");
+}
+
+.button_next {
+  top: 12px;
+  left: 90%;
+  background-image: url("data:image/svg+xml,%3Csvg width='9' height='16' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.292893 15.7071C-0.0976311 15.3166 -0.0976312 14.6834 0.292893 14.2929L6.58579 8L0.292893 1.70711C-0.0976317 1.31658 -0.0976318 0.683417 0.292893 0.292893C0.683417 -0.0976315 1.31658 -0.0976315 1.70711 0.292893L8.70711 7.29289C9.09763 7.68342 9.09763 8.31658 8.70711 8.70711L1.70711 15.7071C1.31658 16.0976 0.683418 16.0976 0.292893 15.7071Z' fill='%23475467'/%3E%3C/svg%3E");
+}
+
+.month,
+.captionLabel {
+  font-weight: 600;
+  line-height: 120%;
+  text-align: center;
+}
+
+.month {
+  font-size: 12px;
+  color: var(--text);
+}
+
+.captionLabel {
+  font-size: 16px;
+  color: var(--main);
+}
+
+.monthCaption {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.weeks {
+  border-top: 1px solid var(--text);
+  border-radius: 12px 12px 0 0;
+}

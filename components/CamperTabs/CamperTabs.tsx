@@ -15,9 +15,11 @@ export default function CamperTabs({ camper }: CamperTabsProps) {
   const [activeTab, setActiveTab] = useState<'features' | 'reviews'>(
     'features'
   );
+  const [resetKey, setResetKey] = useState(0);
 
   function handleSubmit() {
     toast.success('The camper has been successfully booked!');
+    setResetKey(prev => prev + 1);
   }
 
   const camperFeatures: { name: string; icon: string }[] = [];
@@ -143,7 +145,7 @@ export default function CamperTabs({ camper }: CamperTabsProps) {
             </div>
           </div>
 
-          <BookForm handleSubmit={handleSubmit} />
+          <BookForm handleSubmit={handleSubmit} resetKey={resetKey} />
         </div>
       )}
 
@@ -179,7 +181,7 @@ export default function CamperTabs({ camper }: CamperTabsProps) {
             })}
           </ul>
 
-          <BookForm handleSubmit={handleSubmit} />
+          <BookForm handleSubmit={handleSubmit} resetKey={resetKey} />
         </div>
       )}
     </section>

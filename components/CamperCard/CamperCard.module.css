@@ -69,7 +69,6 @@
 .features {
   display: flex;
   flex-wrap: wrap;
-  width: 395px;
   gap: 8px;
 }
 
