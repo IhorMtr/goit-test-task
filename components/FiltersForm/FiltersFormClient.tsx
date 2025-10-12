@@ -43,6 +43,7 @@ export default function FiltersFormClient({
 
     try {
       const formData = new FormData(e.currentTarget);
+      setCampers([]);
       const result = await action(formData);
       setFilters({
         location: result.location,

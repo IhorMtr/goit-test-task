@@ -6,13 +6,7 @@
   height: 368px;
   display: flex;
   gap: 24px;
-}
-
-.reviewsIcon {
-  fill: var(--rating);
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
+  margin-bottom: 32px;
 }
 
 .icon {
@@ -60,42 +54,9 @@
   line-height: 133%;
 }
 
-.heartIcon {
-  fill: var(--main);
-  height: 100%;
-  width: 100%;
-}
-
-.favButton {
-  width: 26px;
-  height: 24px;
-  background: none;
-  margin-left: 12px;
-}
-
 .headerBottom {
   display: flex;
   gap: 16px;
-}
-
-.reviewsWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.mapIcon {
-  width: 16px;
-  height: 16px;
-}
-
-.locationWrapper {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.reviews {
-  text-decoration: underline;
 }
 
 .infoBlockWrapper {
@@ -103,21 +64,6 @@
   flex-direction: column;
   gap: 24px;
   flex: 1;
-}
-
-.showMoreButton {
-  border-radius: 200px;
-  width: 166px;
-  height: 56px;
-  background: var(--button);
-  transition: 0.3s;
-  letter-spacing: -0.01em;
-  color: var(--white);
-  margin-top: auto;
-}
-
-.showMoreButton:hover {
-  background: var(--button-hover);
 }
 
 .features {

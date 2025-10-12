@@ -3,23 +3,14 @@ import css from './CamperCard.module.css';
 import Image from 'next/image';
 import { foramtPrice } from '@/lib/helpers/formatPrice';
 import { capitalize } from '@/lib/helpers/capitalize';
+import FavouriteButton from '../FavouriteButton/FavouriteButton';
+import ShowMoreButton from '../ShowMoreButton/ShowMoreButton';
+import Location from '../Location/Location';
+import Reviews from '../Reviews/Reviews';
 
 interface CamperCardProps {
   camper: Camper;
 }
-
-// const categories = [
-//   { name: 'automatic', icon: 'icon-automatic' },
-//   { name: 'fridge', icon: 'icon-fridge' },
-//   { name: 'gas', icon: 'icon-gas' },
-//   { name: 'kitchen', icon: 'icon-kitchen' },
-//   { name: 'microwave', icon: 'icon-microwave' },
-//   { name: 'petrol', icon: 'icon-petrol' },
-//   { name: 'radio', icon: 'icon-radio' },
-//   { name: 'shower', icon: 'icon-shower' },
-//   { name: 'water', icon: 'icon-water' },
-//   { name: 'wind', icon: 'icon-wind' },
-// ];
 
 export default function CamperCard({ camper }: CamperCardProps) {
   const reviewsCount = camper.reviews.length;
@@ -62,6 +53,7 @@ export default function CamperCard({ camper }: CamperCardProps) {
           fill
           className={css.image}
           unoptimized
+          priority
         />
       </div>
       <div className={css.infoBlockWrapper}>
@@ -70,28 +62,12 @@ export default function CamperCard({ camper }: CamperCardProps) {
             <h2 className={css.title}>{camper.name}</h2>
             <div className={css.headerTopWrapper}>
               <p className={css.price}>{foramtPrice(camper.price)}</p>
-              <button className={css.favButton}>
-                <svg className={css.heartIcon}>
-                  <use href={`/icons.svg#icon-heart`} />
-                </svg>
-              </button>
+              <FavouriteButton id={camper.id} />
             </div>
           </div>
           <div className={css.headerBottom}>
-            <div className={css.reviewsWrapper}>
-              <svg className={css.reviewsIcon}>
-                <use href={`/icons.svg#icon-star`} />
-              </svg>
-              <p className={css.reviews}>
-                {camper.rating}({reviewsCount} Reviews)
-              </p>
-            </div>
-            <div className={css.locationWrapper}>
-              <svg className={css.mapIcon}>
-                <use href={`/icons.svg#icon-map`} />
-              </svg>
-              <p className={css.location}>{camper.location}</p>
-            </div>
+            <Reviews rating={camper.rating} reviewsCount={reviewsCount} />
+            <Location location={camper.location} />
           </div>
         </div>
 
@@ -107,7 +83,7 @@ export default function CamperCard({ camper }: CamperCardProps) {
             </li>
           ))}
         </ul>
-        <button className={css.showMoreButton}>Show more</button>
+        <ShowMoreButton id={camper.id} />
       </div>
     </article>
   );

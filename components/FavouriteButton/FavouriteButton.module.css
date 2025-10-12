@@ -1,0 +1,16 @@
+.favButton {
+  width: 26px;
+  height: 24px;
+  background: none;
+  margin-left: 12px;
+}
+
+.heartIcon {
+  height: 100%;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.pressed svg {
+  fill: var(--button);
+}

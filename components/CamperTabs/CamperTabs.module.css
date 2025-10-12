@@ -1,0 +1,163 @@
+.featuresWrapper,
+.reviews {
+  display: flex;
+  margin-top: 68px;
+  margin-bottom: 80px;
+  gap: 40px;
+}
+
+.active::after {
+  position: absolute;
+  content: '';
+  width: 85px;
+  height: 5px;
+  background-color: var(--button);
+  top: 46px;
+  left: 0;
+  z-index: 100;
+}
+
+.tab {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  position: relative;
+  background: none;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 40px;
+  position: relative;
+}
+
+.buttonsWrapper::after {
+  content: '';
+  position: absolute;
+  width: 1312px;
+  height: 2px;
+  background-color: var(--gray-light);
+  top: 48px;
+}
+
+.section {
+  padding: 0;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 10px;
+  padding: 44px 52px;
+  width: 631px;
+  height: 588px;
+  background: var(--inputs);
+}
+
+.featuresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.featureItem {
+  border-radius: 100px;
+  padding: 12px 18px;
+  height: 48px;
+  background: var(--badges);
+  mix-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.strokeIcon {
+  fill: none;
+  stroke: var(--main);
+}
+
+.featuresDetailsWrapper {
+  margin-top: auto;
+  width: 527px;
+  height: 296px;
+  position: relative;
+}
+
+.featuresTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.featuresTitle::after {
+  left: 0;
+  top: 48px;
+  content: '';
+  position: absolute;
+  width: 527px;
+  height: 2px;
+  background-color: var(--gray-light);
+}
+
+.detailsList {
+  margin-top: 48px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsItem {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.avatar {
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background: var(--badges);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--button);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.comment {
+  color: var(--text);
+  margin-top: 16px;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  width: 631px;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.starIcon {
+  fill: var(--rating);
+  width: 16px;
+  height: 16px;
+}

@@ -1,4 +1,5 @@
 import { parseFilter } from '../helpers/parseFilter';
+import { Camper } from '../types/camper';
 import { Response } from '../types/response';
 import { api } from './instance';
 
@@ -21,5 +22,10 @@ export async function getFilteredCampers(
   }).toString();
 
   const res = await api.get<Response>(`/campers?${searchParams}`);
+  return res.data;
+}
+
+export async function getCamperById(id: string): Promise<Camper> {
+  const res = await api.get<Camper>(`/campers/${id}`);
   return res.data;
 }
