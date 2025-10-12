@@ -17,7 +17,7 @@ export default function CamperTabs({ camper }: CamperTabsProps) {
   );
 
   function handleSubmit() {
-    toast.success('Кемпер успішно заброньований!');
+    toast.success('The camper has been successfully booked!');
   }
 
   const camperFeatures: { name: string; icon: string }[] = [];
